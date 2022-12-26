@@ -1,0 +1,37 @@
+import fetch from 'node-fetch'
+
+//Plugin By Xynoz!!
+let handler = async (m, { conn, usedPrefix }) => {
+  const ultah = new Date('September 14 2023 00:00:01')
+    const sekarat = new Date().getTime() 
+    const Kurang = ultah - sekarat
+    const ohari = Math.floor( Kurang / (1000 * 60 * 60 * 24));
+    const ojam = Math.floor( Kurang % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))
+    const onet = Math.floor( Kurang % (1000 * 60 * 60) / (1000 * 60))
+    const detek = Math.floor( Kurang % (1000 * 60) / 1000)
+  let vn = `https://github.com/saipulanuar/Api-Github/raw/main/audio/Donasiku.mp3`
+  conn.sendButton(m.chat, `
+┏━ꕥ〔 *Donasi • Dana* 〕ꕥ━⬣
+┃✾ OVO  [085697467632]
+┃✾ Dana  [085697467632]
+┃✾ Saweria  [https://saweria.co/raraharsita2]
+┗━━━━ꕥ
+┏━━ꕥ〔 *NOTE* 〕ꕥ━⬣
+┃ 𝙄𝙣𝙜𝙞𝙣 𝘿𝙤𝙣𝙖𝙨𝙞 Wa.me/6285697467632
+┃ _𝙃𝙖𝙨𝙞𝙡 𝙙𝙤𝙣𝙖𝙨𝙞 𝙖𝙠𝙖𝙣 𝙙𝙞𝙜𝙪𝙣𝙖𝙠𝙖𝙣 𝙗𝙪𝙖𝙩 𝙨𝙚𝙬𝙖_
+┃ _𝙖𝙩𝙖𝙪 𝙗𝙚𝙡𝙞 𝙍𝘿𝙋/𝙑𝙋𝙎 𝙖𝙜𝙖𝙧 𝙗𝙤𝙩 𝙗𝙞𝙨𝙖 𝙟𝙖𝙡𝙖𝙣_
+┃ _𝟮𝟰𝙟𝙖𝙢 𝙩𝙖𝙣𝙥𝙖 𝙠𝙚𝙣𝙙𝙖𝙡𝙖_
+┗━━━━ꕥ
+`.trim(), wm, [['Owner',`/owner`]],m) // Tambah sendiri kalo mau
+conn.sendFile(m.chat, vn, 'haori.mp3', null, m, true, {
+type: 'audioMessage', 
+ptt: true, contextInfo:{ externalAdReply: { title: `💌 Ultah Owner : ${ohari} Hari ${ojam} Jam ${onet} Menit ${detek} Detik`, body: `Follow Tiktok My Bestie`, sourceUrl: 'https://www.tiktok.com/@raraharsita2', thumbnail: await (await fetch('https://i.ibb.co/jfZVKmC/babi2.jpg')).buffer(),}} 
+     }) 
+}
+handler.command = /^(pay|payment|bayar)$/i
+handler.tags = ['info']
+handler.help = ['payment']
+handler.premium = false
+handler.limit = true
+
+export default handler
